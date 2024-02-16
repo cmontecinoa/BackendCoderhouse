@@ -56,7 +56,7 @@ class ProductManager {
         console.log("El código debe ser único");
         return;
       } else {
-        products.push({ id: newId, ...product });
+        products.push({ id: newId, ...product, status: true });
   
         await fs.promises.writeFile(
           this.path,
