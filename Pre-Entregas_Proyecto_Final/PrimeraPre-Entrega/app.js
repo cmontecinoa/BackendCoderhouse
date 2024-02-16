@@ -61,7 +61,7 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-//Actualizamos proucto por id:
+//Actualizamos producto por id:
 
 app.put("/api/products/:pid", async (req, res) => {
   let { pid } = req.params;
