@@ -70,7 +70,7 @@ class CartManager {
 
   //Método para Agregar un producto al Carrito
 
-  async agregarProductoAlCarrito(cartId, productId, quantity = 1) {
+  async agregarProductoAlCarrito(cartId, productId, quantity) {
     const cart = await this.getCartById(cartId);
     const existeProducto = cart.products.find((p) => p.product === productId);
 

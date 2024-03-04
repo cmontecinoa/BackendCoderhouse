@@ -20,7 +20,7 @@ cartsRouter.post("/", async (req, res) => {
 //Listamos los productos que pertenecen a dicho carrito
 
 cartsRouter.get("/:cid", async (req, res) => {
-  const { cid } = parseInt(req.params.cid);
+  const cid = parseInt(req.params.cid);
 
   try {
     const cart = await manager.getCartById(cid);
@@ -34,17 +34,18 @@ cartsRouter.get("/:cid", async (req, res) => {
 //Agregamos productos a distintos carritos
 
 cartsRouter.post("/:cid/product/:pid", async (req, res) => {
-  const {cid} = parseInt(req.params.cid);
+  const cid = parseInt(req.params.cid);
   const {pid} = req.params;
-  const {quantity} = req.body || 1;
+  const {quantity = 1} = req.body;  
   try{
     const actualizarCarrito = await manager.agregarProductoAlCarrito(cid,pid,quantity);
     res.json(actualizarCarrito.products);
   }catch(error){
     console.error("Error al agregar producto al carrito", error);
-    res.status(500).json({error: "Error interno del servidor"});
+    res.status(500).json({error: "Error interno del servidor: "});
 
   }
 });
 
 export default cartsRouter;
+  
