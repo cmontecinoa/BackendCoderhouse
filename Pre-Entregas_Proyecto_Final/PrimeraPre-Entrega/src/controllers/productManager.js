@@ -1,9 +1,9 @@
 import * as fs from "fs";
 
-class ProductManager {
-  constructor() {
-    this.path ="./src/models/products.json";
-    this.productos = []; // Probablemente se utilizará para almacenar una lista de productos dentro de la instancia de la clase
+class ProductManager{
+  constructor(path) {
+    this.path = path;
+    this.productos = []; // Probablemente se utilizará para almacenar una lista de productos dentro de la instancia de esta clase
   }
   static lastId = 0;
 
@@ -42,34 +42,32 @@ class ProductManager {
     try {
       const products = await this.getProducts();
       let newId;
-  
+
       if (products.length > 0) {
-        newId = products.reduce(
-          (maxId, product) => Math.max(maxId, product.id),
-          0
-        ) + 1;
+        newId =
+          products.reduce((maxId, product) => Math.max(maxId, product.id), 0) +
+          1;
       } else {
         newId = 1;
       }
-  
+
       if (products.some((p) => p.code === product.code)) {
         console.log("El código debe ser único");
         return;
       } else {
         products.push({ id: newId, ...product, status: true });
-  
+
         await fs.promises.writeFile(
           this.path,
           JSON.stringify(products, null, 2)
         );
-  
+
         console.log("Objeto creado exitosamente crack!");
       }
     } catch (error) {
       console.error("Error al crear el producto:", error);
     }
   }
-  
 
   //Método para cojer un producto por su ID
   async getProductById(id) {
@@ -93,7 +91,7 @@ class ProductManager {
       const newArrayOfProducts = products.filter((p) => p.id !== id);
       await fs.promises.writeFile(
         this.path,
-        JSON.stringify(newArrayOfProducts)
+        JSON.stringify(newArrayOfProducts, null, 2)
       );
     } catch (error) {
       return error;
@@ -117,7 +115,10 @@ class ProductManager {
         const updateProduct = Object.assign(oldProduct, obj);
         console.log(updateProduct);
         products.splice(indexOfProduct, 1, updateProduct);
-        await fs.promises.writeFile(this.path, JSON.stringify(products, null, 2));
+        await fs.promises.writeFile(
+          this.path,
+          JSON.stringify(products, null, 2)
+        );
         console.log("Product Updated Sucefully!");
         return;
       }

@@ -42,7 +42,7 @@
   {
     "id": 5,
     "title": "Mi 11 Ultra",
-    "description": "Generic Description",
+    "description": "This isnt a Generic Description",
     "price": 50000,
     "thumbnail": "ImageExample",
     "code": "#105",
