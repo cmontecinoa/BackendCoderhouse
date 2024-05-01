@@ -1,0 +1,19 @@
+<h1>Hola mundo! Qué tal?</h1>
+
+<div class="contenedorProductos">
+    {{#each productos}}
+    <p>{{this.title}}</p>
+    <p>{{this.description}}</p>
+    <p>{{this.price}}</p>
+    <hr>
+    {{/each}}
+</div>
+
+<script
+  src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+  integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+  crossorigin="anonymous"
+></script>
+<script src="js/main.js"></script>
+
+{{! No se olviden el orden de los scripts, el nuestro siempre al final }}
