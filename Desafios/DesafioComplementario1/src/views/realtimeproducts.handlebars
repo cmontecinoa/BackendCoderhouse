@@ -1,0 +1,30 @@
+<h1>Real Time Products vista</h1>
+<h2>Productos Actuales</h2>
+
+<div id="IDcontainerProductos">
+
+</div>
+
+<h2> Formulario para agregar productos </h2>
+
+<form>
+  <input type="text" id="title" placeholder="TitleProduct" />
+  <input type="text" id="description" placeholder="Description" />
+  <input type="number" id="price" placeholder="Price" />
+  <input type="text" id="img" placeholder="Image" />
+  <input type="text" id="code" placeholder="Code" />
+  <input type="text" id="category" placeholder="Category" />
+  <input type="number" id="stock" placeholder="Stock" />
+  <select id="status">
+    <option value="true">Activo</option>
+    <option value="false">Inactivo</option>
+  </select>
+  <button id="btnEnviar"> Enviar </button>
+</form>
+
+<script
+  src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+  integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+  crossorigin="anonymous"
+></script>
+<script src="js/main.js"></script>
