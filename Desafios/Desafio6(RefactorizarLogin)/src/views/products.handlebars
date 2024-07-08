@@ -1,0 +1,27 @@
+<p>Bienvenido {{user.role}} </p>
+<h4>{{user.first_name}} {{user.last_name}}</h4>
+
+<form method="POST" action="api/session/logout">
+  <button type="submit">Cerrar sesión</button></form>
+<h1>Productos</h1>
+<div class="card-container">
+  {{#each productos}}
+    <div class="card">
+      <h2>{{title}}</h2>
+      <p>{{description}}</p>
+      <h3>Price: ${{price}}</h3>
+      <h4>Thumbnail: {{thumbnail}}</h4>
+      <button>Agregar al Carrito!</button>
+    </div>
+  {{/each}}
+</div>
+
+<div class="pagination">
+  {{#if hasPrevPage}}
+    <a href="/products?page={{prevPage}}">Anterior</a>
+  {{/if}}
+  {{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}">Siguiente</a>
+  {{/if}}
+  <p>Página {{currentPage}} de {{totalPages}}</p>
+</div>
